@@ -18,7 +18,7 @@ public class ObstacleController : MonoBehaviour
 
     void Obstacle()
     {
-        List<string> obstacles = new List<string>() { "Up", "Down" };
+        string[] obstacles = { "Up", "Down" };
         int position = Random.Range(0, 2);
         string obstaclePosition = obstacles[position];
         switch (obstaclePosition)

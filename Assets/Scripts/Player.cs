@@ -64,5 +64,8 @@ public class Player : MonoBehaviour
         {
             Destroy(other.gameObject);
         }
+        if(other.CompareTag("GroundSpawn")){
+             GameController.instance.SpawnGround();
+        }
     }
 }
