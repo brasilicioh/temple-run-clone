@@ -18,10 +18,22 @@ public class GroundSpawner : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
+            Vector3 spawnPosition;
+            float[] rotacoesPossiveis = {-90f, 0f, 90f};
+            float rotY = rotacoesPossiveis[Random.Range(0, rotacoesPossiveis.Length)];
+            Quaternion newRot = Quaternion.Euler(0, rotY, 0);
+
+            if (rotY == 90f) {
+                spawnPosition = pivotSpawn.position + new Vector3(-42, 0, 0);
+            } 
+            else if (rotY == -90f) {
+                spawnPosition = pivotSpawn.position + new Vector3(42, 0, 0);
+            } else {
+                spawnPosition = pivotSpawn.position + new Vector3(0f, 0, zPosition);
+            }
+
             canSpawn = false;
-            Vector3 spawnPosition = pivotSpawn.position + new Vector3(0f, 0, zPosition);
-            Instantiate(groundPrefab, spawnPosition, Quaternion.identity);
+            Instantiate(groundPrefab, spawnPosition, newRot);
         }
     }
-
 }
