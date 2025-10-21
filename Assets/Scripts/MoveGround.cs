@@ -15,6 +15,11 @@ public class MoveGround : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.transform.Translate(Vector3.back * moveSpeed * Time.deltaTime);
+        rb.transform.Translate(Vector3.back * moveSpeed * Time.deltaTime, Space.World);
+    }
+
+    void OnBecameInvisible() 
+    {
+        Destroy(gameObject);
     }
 }
