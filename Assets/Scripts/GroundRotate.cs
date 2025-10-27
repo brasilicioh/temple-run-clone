@@ -25,7 +25,7 @@ public class GroundRotate : MonoBehaviour
                 groundPrefab.transform.position = new Vector3(0f, position.y, position.z);
             }
             else if (Input.GetKeyDown(KeyCode.RightArrow)) {
-                ...
+                Debug.Log("..."); //Correção de erro
             }
         }
     }

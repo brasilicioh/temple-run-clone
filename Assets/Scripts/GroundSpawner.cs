@@ -15,7 +15,7 @@ public class GroundSpawner : MonoBehaviour
         {
             return;
         }
-
+        //NECESSARIO FAZER O SPAWNOBSTACLE SE MOVER JUNTO COM O CHÃO
         if (other.CompareTag("Player"))
         {
             Vector3 spawnPosition;

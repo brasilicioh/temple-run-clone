@@ -6,18 +6,19 @@ public class ObstacleController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        InvokeRepeating("Obstacle", 1f, 1f);
+        InvokeRepeating("CreateObstacle", 1f, 0.5f);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+    
     }
 
-    void Obstacle()
+    void CreateObstacle()
     {
-        string[] obstacles = { "Up", "Down", "None"};
+        //O SpawnObstacle está no prefab do chão
+        string[] obstacles = { "Up", "Down", "None", "None" };
         int tamanho = obstacles.Length;
         int position = Random.Range(0, tamanho);
         string obstaclePosition = obstacles[position];
@@ -28,7 +29,7 @@ public class ObstacleController : MonoBehaviour
                 Instantiate(
                     obstacle,
                     new Vector3(0f, positionY, transform.position.z),
-                    Quaternion.identity //esse Quaternion identity n deveria estar dentro do parenteses? não lembro como ele funciona
+                    Quaternion.identity
                 );
                 Debug.Log("Up");
                 break;
@@ -38,9 +39,10 @@ public class ObstacleController : MonoBehaviour
                     new Vector3(0f, transform.position.y, transform.position.z),
                     Quaternion.identity
                 );
-                //Rotaciona obstaculo há 90°
+
                 Debug.Log("Down");
                 break;
         }
     }
+    
 }
