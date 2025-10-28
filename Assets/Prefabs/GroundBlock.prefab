@@ -360,6 +360,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zPosition: 44
   groundPrefab: {fileID: 3963067464435822735}
+  pivot: {fileID: 2069619962391868622}
   pivotSpawn: {fileID: 283323954096514170}
 --- !u!1 &8714343637970936446
 GameObject:

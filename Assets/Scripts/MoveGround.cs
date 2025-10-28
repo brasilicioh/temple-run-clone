@@ -2,24 +2,32 @@ using UnityEngine;
 
 public class MoveGround : MonoBehaviour
 {
-    private Rigidbody rb;
-    [SerializeField] public bool EraseGround;
     [SerializeField] private float moveSpeed;
+
+    private Rigidbody rbGround;
+    private Vector3 vetor;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        EraseGround = false;
-        rb = GetComponent<Rigidbody>();
+        vetor = Vector3.back;
+        rbGround = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        rb.transform.Translate(Vector3.back * moveSpeed * Time.deltaTime, Space.World);
+        rbGround.transform.Translate(vetor * moveSpeed * Time.deltaTime, Space.World);
     }
 
     void OnBecameInvisible() 
     {
         Destroy(gameObject);
+    }
+
+    public void setVetor(Vector3 vetor)
+    {
+        Debug.Log("aaaaaaaaa");
+        this.vetor = vetor;
     }
 }

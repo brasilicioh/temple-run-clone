@@ -4,6 +4,7 @@ public class GroundSpawner : MonoBehaviour
 {
     [SerializeField] private float zPosition;
     [SerializeField] private GameObject groundPrefab;
+    [SerializeField] private GameObject pivot;
     [SerializeField] private Transform pivotSpawn;
 
     private bool canSpawn = true;
@@ -21,6 +22,8 @@ public class GroundSpawner : MonoBehaviour
             Vector3 spawnPosition;
             float[] rotacoesPossiveis = {-90f, 0f, 90f};
             float rotY = rotacoesPossiveis[Random.Range(0, rotacoesPossiveis.Length)];
+            GroundRotate script = pivot.GetComponent<GroundRotate>();
+            script.SetRot(rotY);
             Quaternion newRot = Quaternion.Euler(0, rotY, 0);
 
             if (rotY == 90f) {
@@ -34,6 +37,8 @@ public class GroundSpawner : MonoBehaviour
 
             canSpawn = false;
             Instantiate(groundPrefab, spawnPosition, newRot);
+
+            Destroy(pivot);
         }
     }
 }
