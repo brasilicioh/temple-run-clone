@@ -31,7 +31,6 @@ public class ObstacleController : MonoBehaviour
                     new Vector3(0f, positionY, transform.position.z),
                     Quaternion.identity
                 );
-                Debug.Log("Up");
                 break;
             case "Down":
                 Instantiate(
@@ -39,8 +38,6 @@ public class ObstacleController : MonoBehaviour
                     new Vector3(0f, transform.position.y, transform.position.z),
                     Quaternion.identity
                 );
-
-                Debug.Log("Down");
                 break;
         }
     }

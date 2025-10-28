@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GroundRotate : MonoBehaviour
 {
-    [SerializeField] private GameObject groundPrefab;
+    [SerializeField] private GameObject Character, Ground;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -15,17 +15,14 @@ public class GroundRotate : MonoBehaviour
         
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            if (Input.GetKeyDown(KeyCode.H))
             {
-                Vector3 position = groundPrefab.transform.position;
-                groundPrefab.transform.position = new Vector3(0f, position.y, position.z);
-            }
-            else if (Input.GetKeyDown(KeyCode.RightArrow)) {
-                Debug.Log("..."); //Correção de erro
+                Debug.Log("aaaaa");
+                Character.transform.rotation = Ground.transform.rotation;
             }
         }
     }
