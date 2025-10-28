@@ -5,12 +5,14 @@ public class Player : MonoBehaviour
     private Animator animator;
     private Rigidbody rigidbody;
     private bool jumping;
+    private bool isGrounded;
     [SerializeField] private float jumpForce;
     [SerializeField] private float velocity;
     
 
     void Start()
     {
+        isGrounded = true;
         jumping = false;
         animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody>();
@@ -18,7 +20,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             jumping = true;
         }
@@ -59,13 +61,22 @@ public class Player : MonoBehaviour
         if (other.CompareTag("Ground"))
         {
             animator.SetBool("Jump", false);
+            isGrounded = true;
         }
         if (other.CompareTag("Coin"))
         {
             Destroy(other.gameObject);
         }
         if(other.CompareTag("GroundSpawn")){
-             GameController.instance.SpawnGround();
+            GameController.instance.SpawnGround();
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Ground"))
+        {
+            isGrounded = false;
         }
     }
 }
